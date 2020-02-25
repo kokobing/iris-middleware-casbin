@@ -21,11 +21,10 @@ csv权限配置不从本地文件读取，更改为REDIS方式存储和读取。
 
 casbin/casbin.go
 
-func Username(r *http.Request) string {
-
+    func Username(r *http.Request) string {
     //username, _, _ := r.BasicAuth()
     return "admin"
-}
+    }
 
 上面的函数返回的用户名用于权限调试
 
@@ -42,7 +41,9 @@ main.go
 	Enforcer.AddPolicy("member", "/member/*", "*")
   
   //保存配置到REDIS
-  if err := Enforcer.SavePolicy(); err != nil {
+  
+  
+       if err := Enforcer.SavePolicy(); err != nil {
 		panic(err)
 	}
 
